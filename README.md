@@ -1,4 +1,4 @@
-# umejug-mutation-testing-lab
+# sylog-mutation-testing-lab
 
 ## OSX  / Linux
 
