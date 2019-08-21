@@ -1,0 +1,40 @@
+package sylog.lab.mutationtest.domain.shopping.product;
+
+import sylog.lab.mutationtest.domain.Entity;
+import sylog.lab.mutationtest.domain.Identifier;
+import sylog.lab.mutationtest.domain.util.Validate;
+
+import java.util.Collections;
+import java.util.Set;
+
+public final class Product extends Entity {
+
+    private final ProductName name;
+    private final ProductDescription description;
+    private final Set<Identifier> categories;
+
+    public Product(Identifier identifier, ProductName name, ProductDescription description, Set<Identifier> categories) {
+        super(identifier);
+
+        Validate.notNull(name);
+        Validate.notNull(description);
+        Validate.notNull(categories);
+        Validate.notEmpty(categories);
+
+        this.name = name;
+        this.description = description;
+        this.categories = Collections.unmodifiableSet(categories);
+    }
+
+    public ProductName getName() {
+        return name;
+    }
+
+    public Set<Identifier> getCategories() {
+        return categories;
+    }
+
+    public ProductDescription getDescription() {
+        return description;
+    }
+}

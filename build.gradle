@@ -1,0 +1,49 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.7.RELEASE'
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.0'
+    }
+}
+
+plugins {
+    id 'idea'
+    id 'eclipse'
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot' version '2.1.7.RELEASE'
+}
+
+group 'umejug.lab'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+
+apply plugin: "info.solidsoft.pitest"
+
+pitest {
+    enableDefaultIncrementalAnalysis = true
+    pitestVersion = "1.4.9"
+    targetClasses = ['sylog.lab.mutationtest.*']  // by default "${project.group}.*"
+    timestampedReports = false
+    mutators = ['ALL']
+}
+
+dependencies {  
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.5.2'
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+}
