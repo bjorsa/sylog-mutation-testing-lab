@@ -27,8 +27,6 @@ repositories {
     mavenCentral()
 }
 
-
-
 apply plugin: "info.solidsoft.pitest"
 
 pitest {
@@ -36,7 +34,7 @@ pitest {
     pitestVersion = "1.4.9"
     targetClasses = ['sylog.lab.mutationtest.*']  // by default "${project.group}.*"
     timestampedReports = false
-    mutators = ['ALL']
+    mutators = ['STRONGER']
 }
 
 dependencies {  
