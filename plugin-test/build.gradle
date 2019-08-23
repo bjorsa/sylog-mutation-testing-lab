@@ -8,7 +8,8 @@ buildscript {
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.7.RELEASE'
         classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.0'
-        pitest 'sylog.lab:sylog.lab.mutation-testing.plugins:1.1-SNAPSHOT'
+        classpath 'sylog.lab:sylog.lab.mutation-testing.plugins:1.0-SNAPSHOT:uber'
+        pitest 'sylog.lab:sylog.lab.mutation-testing.plugins:1.0-SNAPSHOT:uber'
     }
 }
 
